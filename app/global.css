@@ -1,11 +1,26 @@
 @import 'tailwindcss';
 
-::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  --tw-prose-body: rgb(134 239 172) !important;
+  --tw-prose-headings: rgb(74 222 128) !important;
+  --tw-prose-lead: rgb(134 239 172) !important;
+  --tw-prose-links: rgb(74 222 128) !important;
+  --tw-prose-bold: rgb(134 239 172) !important;
+  --tw-prose-counters: rgb(134 239 172) !important;
+  --tw-prose-bullets: rgb(134 239 172) !important;
+  --tw-prose-hr: rgb(63 63 70) !important;
+  --tw-prose-quotes: rgb(134 239 172) !important;
+  --tw-prose-quote-borders: rgb(74 222 128) !important;
+  --tw-prose-captions: rgb(161 161 170) !important;
+  --tw-prose-code: rgb(134 239 172) !important;
+  --tw-prose-pre-code: rgb(212 212 212) !important;
+  --tw-prose-pre-bg: rgb(39 39 42 / 0.5) !important;
+  --tw-prose-th-borders: rgb(63 63 70) !important;
+  --tw-prose-td-borders: rgb(63 63 70) !important;
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -15,6 +30,11 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+}
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,9 +53,12 @@ html {
   min-width: 360px;
 }
 
+.prose {
+  @apply text-green-300;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -43,21 +66,17 @@ html {
   cursor: pointer;
 }
 
-.anchor:hover {
+.prose *:hover > .anchor {
   @apply visible;
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply text-green-400 hover:text-green-300 transition-all underline-offset-2 decoration-[0.1em];
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  @apply text-green-400;
   content: '#';
-}
-
-.prose *:hover > .anchor {
-  @apply visible;
 }
 
 .prose pre {
@@ -65,54 +84,53 @@ html {
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-lg bg-neutral-50 dark:bg-neutral-900;
 }
 
-.prose pre code {
+..prose pre code {
   @apply p-0;
   border: initial;
   line-height: 1.5;
+  background-color: transparent;
 }
-
 .prose code span {
   @apply font-medium;
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
   @apply m-0;
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-4 text-green-300;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2 text-green-400;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-green-400;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-green-400;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-lg font-medium tracking-tight mt-6 mb-2 text-green-400;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-medium text-green-400;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 text-green-300;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 text-green-300;
 }
 
 .prose > :first-child {
@@ -126,8 +144,8 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Remove Safari input shadow on mobile */

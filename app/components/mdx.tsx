@@ -100,18 +100,17 @@ const components = {
   a: CustomLink,
   code: Code,
   Table,
-  content: (props) => <div className="text-green-300" {...props} />,
 }
 
 export function CustomMDX(props) {
   return (
-    <div className="mt-4 space-y-4 ml-4">
-      <div className="text-green-300">
+    <article className="prose prose-invert max-w-none">
+      <div className="text-green-300 [&>*]:text-green-300 [&>p]:text-green-300">
         <MDXRemote
           {...props}
           components={{ ...components, ...(props.components || {}) }}
         />
       </div>
-    </div>
+    </article>
   )
 }

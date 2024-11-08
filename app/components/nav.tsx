@@ -1,7 +1,7 @@
 export function Navbar() {
   return (
     <nav className="font-mono">
-      <div className="antialiased max-w-xl mx-4 lg:mx-auto">
+      <div className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <div className="flex items-center justify-center space-x-8">
           <a
             href="/"
