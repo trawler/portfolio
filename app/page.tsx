@@ -9,7 +9,7 @@ const Page = () => {
         <div className="bg-zinc-800/50 rounded-lg p-2 mb-4">
           <div className="overflow-hidden rounded-lg">
             <img
-              src="/images/profile.png"
+              src="/images/profile.jpg"
               alt="Karen Almog"
               className="w-full h-full object-cover"
             />
