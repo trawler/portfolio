@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { highlight } from 'sugar-high'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import { highlight } from 'sugar-high'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -31,17 +31,17 @@ function CustomLink(props) {
 
   if (href.startsWith('/')) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} className="text-green-400 hover:text-green-300" {...props}>
         {props.children}
       </Link>
     )
   }
 
   if (href.startsWith('#')) {
-    return <a {...props} />
+    return <a className="text-green-400 hover:text-green-300" {...props} />
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />
+  return <a target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300" {...props} />
 }
 
 function RoundedImage(props) {
@@ -50,18 +50,18 @@ function RoundedImage(props) {
 
 function Code({ children, ...props }) {
   let codeHTML = highlight(children)
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} className="bg-zinc-800/50 rounded px-1" {...props} />
 }
 
 function slugify(str) {
   return str
     .toString()
     .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/&/g, '-and-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
 }
 
 function createHeading(level) {
@@ -69,12 +69,15 @@ function createHeading(level) {
     let slug = slugify(children)
     return React.createElement(
       `h${level}`,
-      { id: slug },
+      {
+        id: slug,
+        className: 'text-green-400 font-semibold'
+      },
       [
         React.createElement('a', {
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: 'anchor',
+          className: 'anchor hover:text-green-300',
         }),
       ],
       children
@@ -86,7 +89,7 @@ function createHeading(level) {
   return Heading
 }
 
-let components = {
+const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -97,13 +100,18 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
+  content: (props) => <div className="text-green-300" {...props} />,
 }
 
 export function CustomMDX(props) {
   return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
-    />
+    <div className="mt-4 space-y-4 ml-4">
+      <div className="text-green-300">
+        <MDXRemote
+          {...props}
+          components={{ ...components, ...(props.components || {}) }}
+        />
+      </div>
+    </div>
   )
 }
