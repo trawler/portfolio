@@ -8,16 +8,30 @@ import './global.css'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: 'Karen Almog',
-  description: 'This is my portfolio.',
+  metadataBase: new URL('https://trawler.sh'),
+  title: {
+    default: 'Karen Almog - Principal Software Engineer',
+    template: '%s | Karen Almog'
+  },
+  description: 'Principal Software Engineer specialized in Kubernetes, cloud-native technologies, and distributed systems. Expert in Go, infrastructure, and platform engineering.',
+  keywords: ['Kubernetes', 'Go', 'Software Engineering', 'Cloud Native', 'DevOps', 'Platform Engineering'],
+  authors: [{ name: 'Karen Almog' }],
+  creator: 'Karen Almog',
   openGraph: {
-    title: 'Karen Almog',
-    description: 'Kubernetes developer and open source enthusiast.',
-    url: baseUrl,
-    siteName: 'Karen Almog',
-    locale: 'en_US',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://trawler.sh',
+    title: 'Karen Almog - Principal Software Engineer',
+    description: 'Principal Software Engineer specialized in Kubernetes and cloud-native technologies',
+    siteName: 'Karen Almog',
+    images: [
+      {
+        url: '/og',
+        width: 1200,
+        height: 630,
+        alt: 'Karen Almog - Principal Software Engineer',
+      }
+    ],
   },
   robots: {
     index: true,
