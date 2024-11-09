@@ -18,14 +18,14 @@ const Page = () => {
         <div className="flex gap-6 justify-center mt-4">
           <a
             href="https://github.com/trawler"
-            className="text-green-400 hover:text-green-300 transition-colors"
+            className="text-green-400 hover:text-blue-400 transition-colors"
             aria-label="GitHub Profile"
           >
             <SiGithub size={24} />
           </a>
           <a
             href="https://linkedin.com/in/trawler"
-            className="text-green-400 hover:text-green-300 transition-colors"
+            className="text-green-400 hover:text-blue-400 transition-colors"
             aria-label="LinkedIn Profile"
           >
             <SiLinkedin size={24} />

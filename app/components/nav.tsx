@@ -5,19 +5,19 @@ export function Navbar() {
         <div className="flex items-center justify-center space-x-8">
           <a
             href="/"
-            className="text-green-400 hover:text-green-300 transition-colors"
+            className="text-green-400 hover:text-blue-400 transition-colors"
           >
             ~/home
           </a>
           <a
             href="/blog"
-            className="text-green-400 hover:text-green-300 transition-colors"
+            className="text-green-400 hover:text-blue-400 transition-colors"
           >
             ~/blog
           </a>
           <a
             href="/cv"
-            className="text-green-400 hover:text-green-300 transition-colors"
+            className="text-green-400 hover:text-blue-400 transition-colors"
           >
             ~/resume
           </a>
