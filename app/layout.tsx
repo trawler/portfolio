@@ -1,27 +1,37 @@
-import './global.css'
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from './components/footer'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+import type { Metadata } from 'next'
+import { Navbar } from './components/nav'
+import './global.css'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL('https://trawler.sh'),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Karen Almog - Principal Software Engineer',
+    template: '%s | Karen Almog'
   },
-  description: 'This is my portfolio.',
+  description: 'Principal Software Engineer specialized in Kubernetes, cloud-native technologies, and distributed systems. Expert in Go, infrastructure, and platform engineering.',
+  keywords: ['Kubernetes', 'Go', 'Software Engineering', 'Cloud Native', 'DevOps', 'Platform Engineering'],
+  authors: [{ name: 'Karen Almog' }],
+  creator: 'Karen Almog',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
-    url: baseUrl,
-    siteName: 'My Portfolio',
-    locale: 'en_US',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://trawler.sh',
+    title: 'Karen Almog - Principal Software Engineer',
+    description: 'Principal Software Engineer specialized in Kubernetes and cloud-native technologies',
+    siteName: 'Karen Almog',
+    images: [
+      {
+        url: '/og',
+        width: 1200,
+        height: 630,
+        alt: 'Karen Almog - Principal Software Engineer',
+      }
+    ],
   },
   robots: {
     index: true,
@@ -47,20 +57,31 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        'bg-zinc-900',
         GeistSans.variable,
         GeistMono.variable
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+      <body className="min-h-screen bg-zinc-900 text-green-400 font-mono">
+        <div className="flex flex-col min-h-screen">
           <Navbar />
-          {children}
-          <Footer />
+          <main className="flex-grow">
+            <div className="max-w-4xl mx-auto px-4">
+              <div className="bg-zinc-800 rounded-lg p-4 my-8">
+                <div className="flex items-center gap-2 mb-4 border-b border-zinc-700 pb-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="text-xs text-zinc-400 ml-2 font-mono">terminal@karen:~$</span>
+                </div>
+                {children}
+              </div>
+            </div>
+          </main>
           <Analytics />
           <SpeedInsights />
-        </main>
+        </div>
       </body>
     </html>
-  )
+  );
 }

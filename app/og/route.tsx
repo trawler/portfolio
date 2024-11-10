@@ -1,22 +1,70 @@
-import { ImageResponse } from 'next/og'
+import { ImageResponse } from "@vercel/og";
+export const runtime = 'edge'
 
-export function GET(request: Request) {
-  let url = new URL(request.url)
-  let title = url.searchParams.get('title') || 'Next.js Portfolio Starter'
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url)
 
-  return new ImageResponse(
-    (
-      <div tw="flex flex-col w-full h-full items-center justify-center bg-white">
-        <div tw="flex flex-col md:flex-row w-full py-12 px-4 md:items-center justify-between p-8">
-          <h2 tw="flex flex-col text-4xl font-bold tracking-tight text-left">
-            {title}
-          </h2>
+    // ?title=<title>
+    const hasTitle = searchParams.has('title')
+    const title = hasTitle
+      ? searchParams.get('title')?.slice(0, 100)
+      : 'Karen Almog - Principal Software Engineer'
+
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#18181B',
+            padding: '40px 80px',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <h1
+              style={{
+                fontSize: '60px',
+                fontWeight: 'bold',
+                color: '#4ADE80', // green-400
+                textAlign: 'center',
+                marginBottom: '20px',
+              }}
+            >
+              {title}
+            </h1>
+            <p
+              style={{
+                fontSize: '30px',
+                color: '#86EF98', // green-300
+                textAlign: 'center',
+              }}
+            >
+              Kubernetes • Cloud Native • Go
+            </p>
+          </div>
         </div>
-      </div>
-    ),
-    {
-      width: 1200,
-      height: 630,
-    }
-  )
+      ),
+      {
+        width: 1200,
+        height: 630,
+      }
+    )
+  } catch (e) {
+    console.log(`${e.message}`)
+    return new Response(`Failed to generate the image`, {
+      status: 500,
+    })
+  }
 }
