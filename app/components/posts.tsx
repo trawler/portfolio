@@ -19,7 +19,7 @@ export function BlogPosts() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="block hover:bg-zinc-700/30 rounded p-2 transition-colors w-full"
+            className="block hover:bg-indigo-100/20 rounded p-2 transition-colors w-full"
           >
             <div className="flex flex-row items-center w-full">
               <div className="w-[90px] shrink-0 font-mono text-zinc-400 text-sm">

@@ -45,7 +45,18 @@ const Page = () => {
             <div className="mt-4 space-y-4 ml-4">
               <p>
                 I'm Karen Almog, a Kubernetes developer and open source enthusiast who believes in learning in public.
-                With experience at companies like Mirantis (k0s), CoreOS (Tectonic), and eBay, I've been fortunate
+                With experience at companies like Mirantis (<a
+                  href="https://github.com/k0sproject/k0s"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 underline"
+                >k0s</a>), CoreOS (<a
+                  href="https://github.com/coreos/tectonic-installer"
+                  target='_blank'
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 underline"
+                >Tectonic</a>
+                ), and eBay, I've been fortunate
                 to work on some exciting projects in the cloud-native space.
               </p>
 

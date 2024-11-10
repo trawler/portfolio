@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @tailwind base;
 @tailwind components;
@@ -71,30 +71,47 @@ html {
 }
 
 .prose a {
-  @apply text-green-400 hover:text-green-300 transition-all underline-offset-2 decoration-[0.1em];
+  @apply text-green-400 underline hover:text-blue-400 transition-colors;
 }
-
 .prose .anchor:after {
   @apply text-green-400;
-  content: '#';
+  content: "#";
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900;
+  padding: 16px !important; /* Force consistent padding */
 }
 
 .prose code {
   @apply px-1 py-0.5 rounded-lg bg-neutral-50 dark:bg-neutral-900;
 }
 
-..prose pre code {
+.prose pre code {
   @apply p-0;
   border: initial;
   line-height: 1.5;
-  background-color: transparent;
 }
 .prose code span {
   @apply font-medium;
+}
+
+.prose pre > code {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent;
+}
+
+.prose ol > li {
+  @apply mb-8; /* Increase bottom margin of list items */
+}
+
+.prose ol > li > pre {
+  @apply mt-8; /* Add top margin to code blocks inside list items */
+}
+
+.prose ol > li:not(:has(pre)) {
+  @apply mb-2; /* Normal spacing for list items without code blocks */
 }
 
 .prose img {
@@ -149,8 +166,8 @@ pre {
 }
 
 /* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
+input[type="text"],
+input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

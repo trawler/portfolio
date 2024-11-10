@@ -1,0 +1,186 @@
+---
+title: "Single vs Double Quotes in Go: More Than Just Style"
+publishedAt: "2024-11-02"
+summary: "The technical differences between using single and double quotes for character representation in Go."
+---
+
+In one of the exercises I was going through, I needed to iterate over a string and compare each character to a specific letter.
+My auto-correct fingers typed out something like this:
+
+```
+for _, c := range strings.ToUpper(word) {
+    if c == "A" {
+        do_something()
+    }
+}
+```
+
+No problem right? I need to compare `c` to the letter A. And since `A` is a string, I _obviously_ need to wrap a string with double-quotes, right?
+
+Wrong! I received the following error:
+
+```
+cannot convert "A" (untyped string constant) to type rune.
+```
+
+I already knew than when using `range` to iterate over a string, the output char will be a rune, but how do I compare the rune to a string?
+
+I can always try using `string()` and it will work:
+
+```
+for _,c := range strings.ToUpper(word) {
+    if string(c) == "A" {
+        do_something()
+    }
+}
+```
+
+But I didn't like it. It felt too awkward.
+
+I eventually realized the error of my code. I was using double quotes instead of single quotes!
+
+```
+for _, c := range strings.ToUpper(word) {
+    if c == 'A' {
+        do_something()
+    }
+}
+```
+
+But why did that work, where double quotes failed?
+
+## Single Quotes: For Runes
+
+In Go, single quotes are used to create _rune literals_. A rune is Go is a term for a single Unicode code point - essentially a single character. Under the hood, a rune is actually an `int32`.
+
+```go
+r := 'A'
+fmt.Printf("Type: %T, Value: %v\n", r, r)
+// Output: Type: int32, Value: 65
+```
+
+When you use single quotes, you're creating a numeric value that represents that character in Unicode. The letter 'A', for example, has the Unicode value of 65.
+
+## Double Quotes: For Strings
+
+Double quotes, on the other hand, create _string literals_. In Go, a string is an immutable sequence of bytes.
+
+```go
+s := "A"
+fmt.Printf("Type: %T, Value: %v\n", s, s)
+// Output: Type: string, Value: A
+```
+
+Even if your string contains just one character, it's still a string - a different type altogether from a rune.
+
+## Backticks: For Raw Strings
+
+In Go, backticks create raw string literals. Unlike double-quoted strings, raw strings preserve everything between the backticks exactly as is - including newlines, tabs, and quotes.
+
+```
+// Double-quoted string needs escaping
+normalString := "First line\nSecond line"
+
+// Backtick string preserves everything literally
+rawString := `First line
+Second line`
+
+// Really helpful when dealing with quotes
+doubleQuoted := "She said \"Hello\" to me"
+rawQuoted := `She said "Hello" to me`
+
+// Perfect for SQL queries or regular expressions
+query := `
+    SELECT *
+    FROM users
+    WHERE name = "Alice"
+    AND age > 21
+`
+
+// Regular expressions are much cleaner
+regex := `\d+(\.\d+)?`  // vs "\\d+(\\.\\d+)?"
+```
+
+## Practical Implications
+
+This distinction matters in real code. Here's why:
+
+1. **Type Safety**
+
+```
+var x rune   = 'A'  // works fine
+var y rune   = "A"  // compilation error
+var z string = `A`  // works fine, but rarely used for single characters
+```
+
+2. **String Length vs Rune Count**
+
+```go
+s := "Hello, 世界"
+t := `Hello, 世界`
+fmt.Println(len(s))         // 13 (bytes)
+fmt.Println(len(t))         // 13 (bytes)
+fmt.Println(utf8.RuneCountInString(s)) // 8 (characters)
+```
+
+3. **Memory Usage**
+
+```go
+r := 'A'    // uses 4 bytes (int32)
+s := "A"    // uses 1 byte plus overhead
+path := "/home/user/long/path/with/\"quotes\""    // needs escaping
+rawPath := `/home/user/long/path/with/"quotes"`   // no escaping needed
+```
+
+## Common Use Cases
+
+- Use single quotes when you need to work with individual characters:
+
+```go
+if char == 'a' {
+    // do something
+}
+```
+
+- Use double quotes for text, even single characters that you'll use as strings:
+
+```go
+message := "A"
+fmt.Println("Status: " + message)
+```
+
+- Use backticks for multi-line strings or when you want to avoid escaping:
+
+```
+html := `
+<html>
+    <body>
+        <h1>Hello, "World"!</h1>
+    </body>
+</html>
+`
+```
+
+## When to Use Which?
+
+- 🔤 Use single quotes (`'A'`) when:
+
+  - You need to compare individual characters
+  - You're doing Unicode processing
+  - You need the numeric value of a character
+
+- 📝 Use double quotes (`"A"`) when:
+  - You're working with text
+  - You need string operations like concatenation
+  - You're storing or displaying character sequences
+- 📄 Use backticks (`text`) when:
+  - You need multi-line strings
+  - You want to avoid escape characters
+  - You're writing regular expressions, SQL queries, or file contents
+  - You need to include quotes within your string
+
+## Summary
+
+In Go, there's no such thing as a single-character string type like in some other languages. You either have a rune (single quotes), a regular string (double quotes), or a raw string (backticks).
+
+This seemingly small syntactic difference reflects Go's strong type system and its clear separation between characters and strings. Understanding this distinction will help you write more idiomatic and correct Go code.
