@@ -151,8 +151,15 @@ const ResumePage = () => {
                 <div className="text-green-300">
                     <ul className="list-disc list-inside space-y-2">
                         <li>Speaker at Kubernetes Community Days Berlin</li>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/oAWeUcowZWU?si=BrbBRjKIYTPGy56m" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                        <li><a
+                            <div className="video-container">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/oAWeUcowZWU?si=BrbBRjKIYTPGy56m" 
+                                    title="YouTube video player" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerPolicy="strict-origin-when-cross-origin"
+                                    allowFullScreen>
+                                </iframe>
+                            </div>                        <li><a
                             href="https://community.cncf.io/events/details/cncf-cloud-native-berlin-presents-kubernetes-amp-cloud-native-berlin-inaugural-meetup/"
                             target="_blank"
                             rel="noopener noreferrer"
