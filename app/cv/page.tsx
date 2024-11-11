@@ -7,12 +7,22 @@ const ResumePage = () => {
                 <h1 className="text-2xl font-semibold mb-2">
                     <span className="text-zinc-400">$</span> whoami
                 </h1>
-                <p className="text-green-300">
-                    Principal Software Engineer specialized in Kubernetes, cloud-native technologies, and distributed systems.
-                    Passionate about open source and building scalable infrastructure solutions.
-                </p>
+                <div className="space-y-4">
+                    <p className="text-green-300">
+                        Principal Software Engineer specialized in Kubernetes, cloud-native technologies, and distributed systems.
+                        Passionate about open source and building scalable infrastructure solutions.
+                    </p>
+                    <div className="flex items-center text-sm">
+                        <span className="text-zinc-400 font-mono">$CONTACT =</span>
+                        <a 
+                            href="mailto:your.email@example.com"
+                            className="ml-2 text-green-400 hover:text-blue-400 underline transition-colors"
+                        >
+                            karen@trawler.sh
+                        </a>
+                    </div>
+                </div>
             </section>
-
             {/* Experience Section */}
             <section className="mb-8">
                 <h2 className="text-xl font-semibold mb-4"> {/* Kept larger size for section heading */}
