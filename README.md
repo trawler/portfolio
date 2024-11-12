@@ -1,42 +1,69 @@
-# Portfolio Blog Starter
+# Terminal-Style Blog & Portfolio
 
-This is a porfolio site template complete with a blog. Includes:
+My personal website with a terminal-themed UI, built with Next.js. Feel free to use this design for your own portfolio!
 
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+## ⚡️ Features
 
-## Demo
+- 🖥️ Terminal-style UI with monospace fonts and command-line aesthetics
+- 📝 Blog with MDX support
+- 🎨 Syntax highlighting for code blocks
+- 🌙 Dark theme optimized for readability
+- 📱 Fully responsive design
+- 🔍 SEO optimized
+- 📊 Performance tracking with Vercel Analytics
 
-https://portfolio-blog-starter.vercel.app
+## 🛠️ Tech Stack
 
-## How to Use
+- Next.js 13 (App Router)
+- Tailwind CSS
+- TypeScript
+- MDX Remote
+- Simple Icons
 
-You can choose from one of the following two methods to use this repository:
+## 🎨 Want to Use This Design?
 
-### One-Click Deploy
+Feel free to use this design for your own portfolio! Here's how to get started:
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
-
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+1. Clone the repository:
 
 ```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
+git clone https://github.com/trawler/portfolio.git
+cd portfolio
 ```
 
-Then, run Next.js in development mode:
+2. Install dependencies:
+
+```bash
+pnpm install
+```
+
+3. Run the development server:
 
 ```bash
 pnpm dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+4. Customize by:
+   - Updating personal information in `app/page.tsx`
+   - Adding your own blog posts in `app/blog/posts`
+   - Modifying the theme colors in `tailwind.config.js`
+
+## 📦 Project Structure
+
+```
+app/
+├── blog/
+│   ├── posts/          # MDX blog posts
+│   └── [slug]/         # Dynamic blog post routes
+├── components/         # Reusable components
+├── public/            # Static assets
+└── global.css        # Global styles
+```
+
+## 📄 License
+
+MIT License - feel free to use this project for your own portfolio!
+
+---
+
+Built by [Karen Almog](https://github.com/trawler)
