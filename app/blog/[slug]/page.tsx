@@ -67,7 +67,10 @@ export default function Blog({ params }) {
         <h1 className="text-2xl font-semibold tracking-tighter text-green-400">
           {post.metadata.title}
         </h1>
-        <div className="flex items-center mt-2 text-sm text-zinc-400">
+        <h2 className="text-l font-medium tracking-tighter text-zinc-400">
+          {post.metadata.summary}
+        </h2>
+        <div className="flex items-center mt-2 text-sm text-zinc-300">
           <span className="font-mono">Created:</span>
           <span className="ml-2">{formatDate(post.metadata.publishedAt)}</span>
         </div>
