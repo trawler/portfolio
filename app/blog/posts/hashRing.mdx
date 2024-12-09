@@ -8,7 +8,9 @@ Have you ever wondered how distributed systems like Cassandra or Redis efficient
 
 I recently faced this challenge while building a distributed object storage system, and the solution led me down the path of consistent hashing.
 
-My goal was to create a gateway that could **consistently and statelessly** distribute data across multiple servers. Let's explore how consistent hashing solves this problem elegantly.
+My goal was to create a gateway that could **consistently and statelessly** distribute data across multiple servers. 
+
+This blog post will delve into the topic of consistent hashing, and how it helped me to solve the challenge at hand.
 
 ## Understanding the Challenge
 
@@ -21,7 +23,7 @@ Imagine you're building a distributed cache or storage system that needs to:
 - Make routing decisions without maintaining state
 - Handle server failures gracefully
 
-A naive approach might use simple modulo hashing, but this leads to massive data redistribution when the number of servers changes. Here's why.
+At first, I looked into simple modulo hashing. It was OK for a use-case where the number of servers remains static, but that's rarely the case, is it? Let's see why.
 
 ## 1. Traditional Hash Distribution
 
@@ -34,7 +36,7 @@ In the context of a distributed system, when we want to equally distribute data 
 - Keep track of which server handles what
 - Store any historical information
 
-### So how would a hash map of 4 servers look like?
+### So how would a hash map of 3 servers look like?
 
 ```go
 // Example of a hash map with 3 servers:
@@ -61,7 +63,7 @@ func getServer(userID string, totalServers int) int {
 
 ### The Problem
 
-With this approach, if you have 4 servers and add a fifth one, roughly 80% of your data needs to be redistributed!
+With this approach, if you have 3 servers and add a fourth one, roughly 80% of your data needs to be redistributed!
 
 This is because the modulo operation creates a completely different mapping when the divisor (number of servers) changes.
 
