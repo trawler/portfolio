@@ -1,0 +1,131 @@
+---
+title: "Array vs Map in Go: LeetCode's Ransom Note Problem"
+publishedAt: "2025-01-30"
+summary: "Exploring the performance implications of different data structures through a LeetCode ransom note problem"
+---
+Today I tackled the [Ransom Note problem on LeetCode](https://leetcode.com/problems/ransom-note/description/). What started as simple string manipulation exercise turned into a deep dive into data structure performance in Go. This post will document the journey of performance improvements from string manipulation to maps to arrays.
+
+## The Problem
+The challenge seems simple at first glance: Given two strings `ransomNote` and `magazine`, determine if you can construct the ransom note using letters from the magazine. Each letter from the magazine can only be used once.
+Examples:
+
+```
+ransomNote = "a", magazine = "b" → false
+ransomNote = "aa", magazine = "ab" → false
+ransomNote = "aa", magazine = "aab" → true
+```
+
+## My First Attempt: String Manipulation (15ms, 11.17MB)
+For my initial solution I went for a stright-forward string manipulation, just to see if I can get it to work:
+
+```go
+func canConstruct(ransomNote string, magazine string) bool {
+    for _, c := range ransomNote {
+        index := strings.Index(magazine, string(c))
+        if index != -1 {
+            //char exists, we can remove it
+            first := magazine[:index]
+            second :=  magazine[index+1:]
+            magazine =  first + second
+        } else {
+            return false
+        }
+    }
+    return true
+}
+```
+It worked, but performance was quite awful. Execution took 15ms, beats only 16.66% and required 11.17mb, beating only 5.22%. 🤦‍♀️
+
+Main reasons being:
+1. Using `strings.Index` means scanning through the magazine for each character
+2. String concatenation creates new strings for each character found
+3. Time complexity is O(n*m) where n and m are the lengths of ransomNote and magazine
+
+## Second Attempt: Using a Map (9ms, 6.01MB)
+After realizing the inefficiencies, I considered using a map to count character frequencies:
+
+```go
+func canConstruct(ransomNote string, magazine string) bool {
+    charCount := make(map[rune]int)
+    
+    for _, c := range magazine {
+        charCount[c]++
+    }
+    
+    for _, c := range ransomNote {
+        charCount[c]--
+        if charCount[c] < 0 {
+            return false
+        }
+    }
+    
+    return true
+}
+```
+
+This was waaayy better: 9 ms runtime, beats 52.20%, memory: 6.01mb, beats 22.23%. 🤩
+
+This gives us:
+
+1. O(m + n) time complexity
+2. No string operations
+3. Clearer intent in the code
+
+## Final Form: Using a Slice (0ms, 5.85MB)
+Then it hit me - we're only dealing with lowercase letters (a-z). Instead of using a map, we can use a slice of 26 elements:
+
+```go
+func canConstruct(ransomNote string, magazine string) bool {
+    charCount := make([]int, 26)
+
+    // count occurances of characters in magazine
+    for _, c := range magazine {
+        charCount[c-'a']++
+    }
+
+    for _, c := range ransomNote {
+        charCount[c-'a']--
+        if charCount[c-'a'] < 0 {
+            return false
+        }
+    }
+
+    return true
+}
+```
+
+And boom! Runtime: 0ms (beats 100%! 🚀), memory: 5.85MB (beats 55.37%).
+
+## Why the Slice Solution Rocks
+Let's break down why this last version absolutely crushes it:
+
+1. Speed: Slice access is lightning fast compared to map lookups
+    - Direct memory addressing (just simple math to find the right spot)
+    - No hash calculations needed
+    - No collision handling
+2. Memory: Fixed size no matter what
+    - Always just 26 integers
+    - No need for map's fancy growing mechanisms
+    - No extra allocations while running
+
+## The c-'a' Trick
+Here's a neat trick I learned: When we do `c-'a'`, we're converting letters to array positions:
+- 'a' becomes 0 ('a'-'a' = 0)
+- 'b' becomes 1 ('b'-'a' = 1)
+- 'z' becomes 25 ('z'-'a' = 25)
+
+Perfect for mapping lowercase letters to positions 0-25 in our slice!
+
+## Lessons Learned 💡
+1. When you know your character set is fixed (like just lowercase letters), slices beat maps
+2. String operations are sneaky expensive
+3. Sometimes the simplest solution is also the fastest
+4. Understanding ASCII values opens up neat tricks
+
+## Note to Future Self
+- Remember the c-'a' trick for lowercase letter indexing
+- Watch out for string concatenation in loops
+- For character counting problems, try slice-based solutions first
+- Maps are great for unknown character sets, slices for known ones
+
+And that's how I turned a 15ms solution into a 0ms one. Not bad for a day's work! 😎
