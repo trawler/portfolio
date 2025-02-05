@@ -15,7 +15,7 @@ export default async function sitemap() {
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  let pages = [    {
+  let pages = [{
     url: baseUrl,
     lastModified: new Date(),
     changeFrequency: 'yearly',
@@ -28,11 +28,11 @@ export default async function sitemap() {
     priority: 0.8,
   },
   {
-    url: `${baseUrl}/resume`,
+    url: `${baseUrl}/cv`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.9,
-    },
+  },
   ]
   return [...pages, ...routes, ...blogs]
 }
