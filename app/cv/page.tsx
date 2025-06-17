@@ -15,7 +15,7 @@ const ResumePage = () => {
                     <div className="flex items-center text-sm">
                         <span className="text-zinc-400 font-mono">$CONTACT =</span>
                         <a 
-                            href="mailto:your.email@example.com"
+                            href="mailto:kalmog@trawler.sh"
                             className="ml-2 text-green-400 hover:text-blue-400 underline transition-colors"
                         >
                             kalmog@trawler.sh
