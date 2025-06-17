@@ -1,4 +1,4 @@
-import { SiGithub, SiLinkedin } from '@icons-pack/react-simple-icons';
+import { SiGithub, SiLinkedin, SiMinutemailer } from '@icons-pack/react-simple-icons';
 import { BlogPosts } from 'app/components/posts';
 
 const Page = () => {
@@ -29,6 +29,15 @@ const Page = () => {
             aria-label="LinkedIn Profile"
           >
             <SiLinkedin size={24} />
+          </a>
+          <a
+            href="mailto:kalmog@trawler.sh?subject=Let's Connect (from trawler.sh)"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-400 hover:text-blue-400 transition-colors"
+            aria-label="Email"
+          >
+            <SiMinutemailer size={24} title="Email" />
           </a>
         </div>
       </div>
