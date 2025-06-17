@@ -14,8 +14,10 @@ const ResumePage = () => {
                     </p>
                     <div className="flex items-center text-sm">
                         <span className="text-zinc-400 font-mono">$CONTACT =</span>
-                        <a 
-                            href="mailto:kalmog@trawler.sh"
+                        <a
+                            href="mailto:kalmog@trawler.sh?subject=Let's Connect (from trawler.sh)"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="ml-2 text-green-400 hover:text-blue-400 underline transition-colors"
                         >
                             kalmog@trawler.sh
@@ -80,7 +82,7 @@ const ResumePage = () => {
                         <p className="text-zinc-400">CoreOS (later RedHat)• 10/2017 - 01/2019</p>
                         <ul className="list-disc list-inside text-green-300 mt-2 space-y-1">
                             <li>Developed the machine-api openshift operator and aws/libvirt actuator for
-                            kubernetes.</li>
+                                kubernetes.</li>
                             <li>Worked on the <a
                                 href="https://github.com/coreos/tectonic-installer"
                                 target="_blank"
@@ -163,10 +165,10 @@ const ResumePage = () => {
                         <li>Speaker at Kubernetes Community Days Berlin</li>
                         <div className="relative w-full md:max-w-lg">
                             <div className="relative w-full aspect-video">
-                                <iframe 
-                                    src="https://www.youtube.com/embed/oAWeUcowZWU?si=BrbBRjKIYTPGy56m" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                <iframe
+                                    src="https://www.youtube.com/embed/oAWeUcowZWU?si=BrbBRjKIYTPGy56m"
+                                    title="YouTube video player"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     referrerPolicy="strict-origin-when-cross-origin"
                                     className="absolute top-0 left-0 w-full h-full"
                                     allowFullScreen>
@@ -175,10 +177,10 @@ const ResumePage = () => {
                         </div>
                         <li>
                             <a
-                            href="https://community.cncf.io/events/details/cncf-cloud-native-berlin-presents-kubernetes-amp-cloud-native-berlin-inaugural-meetup/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-blue-400 underline"
+                                href="https://community.cncf.io/events/details/cncf-cloud-native-berlin-presents-kubernetes-amp-cloud-native-berlin-inaugural-meetup/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-blue-400 underline"
                             >Kubernetes and Cloud Native Kinvolk Meetup</a>
                         </li>
                     </ul>
