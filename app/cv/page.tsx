@@ -18,7 +18,7 @@ const ResumePage = () => {
                             href="mailto:your.email@example.com"
                             className="ml-2 text-green-400 hover:text-blue-400 underline transition-colors"
                         >
-                            karen@trawler.sh
+                            kalmog@trawler.sh
                         </a>
                     </div>
                 </div>
