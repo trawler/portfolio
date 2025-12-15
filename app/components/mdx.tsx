@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { highlight } from 'sugar-high'
 
-function Table({ data }) {
+function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ))
@@ -26,7 +26,7 @@ function Table({ data }) {
   )
 }
 
-function CustomLink(props) {
+function CustomLink(props: { href: string; children?: React.ReactNode }) {
   let href = props.href
 
   if (href.startsWith('/')) {
@@ -44,18 +44,19 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300" {...props} />
 }
 
-function RoundedImage(props) {
+function RoundedImage(props: { alt: string; src: string; [key: string]: any }) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />
 }
 
-function Code({ children, ...props }) {
+function Code({ children, ...props }: { children: string; [key: string]: any }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} className="bg-zinc-800/50 rounded px-1" {...props} />
 }
 
-function slugify(str) {
-  return str
-    .toString()
+function slugify(str: string | React.ReactNode): string {
+  // Extract text content from React node if needed
+  let text = typeof str === 'string' ? str : String(str)
+  return text
     .toLowerCase()
     .trim()
     .replace(/\s+/g, '-')
@@ -64,9 +65,13 @@ function slugify(str) {
     .replace(/\-\-+/g, '-')
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
-    let slug = slugify(children)
+function createHeading(level: number) {
+  const Heading = ({ children }: { children: React.ReactNode }) => {
+    // Extract text from children for slug
+    let text = typeof children === 'string' ? children : 
+               Array.isArray(children) ? children.map(c => typeof c === 'string' ? c : '').join('') :
+               String(children)
+    let slug = slugify(text)
     return React.createElement(
       `h${level}`,
       {
