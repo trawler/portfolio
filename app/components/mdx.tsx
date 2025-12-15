@@ -26,22 +26,22 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   )
 }
 
-function CustomLink(props: { href: string; children?: React.ReactNode }) {
-  let href = props.href
+function CustomLink(props: { href: string; children?: React.ReactNode; className?: string; [key: string]: any }) {
+  const { href, children, className, ...restProps } = props
 
   if (href.startsWith('/')) {
     return (
-      <Link href={href} className="text-green-400 hover:text-green-300" {...props}>
-        {props.children}
+      <Link href={href} className={className || "text-green-400 hover:text-green-300"} {...restProps}>
+        {children}
       </Link>
     )
   }
 
   if (href.startsWith('#')) {
-    return <a className="text-green-400 hover:text-green-300" {...props} />
+    return <a href={href} className={className || "text-green-400 hover:text-green-300"} {...restProps}>{children}</a>
   }
 
-  return <a target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300" {...props} />
+  return <a href={href} target="_blank" rel="noopener noreferrer" className={className || "text-green-400 hover:text-green-300"} {...restProps}>{children}</a>
 }
 
 function RoundedImage(props: { alt: string; src: string; [key: string]: any }) {
