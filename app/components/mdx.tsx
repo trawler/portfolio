@@ -26,7 +26,7 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   )
 }
 
-function CustomLink(props: { href: string; children?: React.ReactNode; className?: string; [key: string]: any }) {
+function CustomLink(props: { href: string; children?: React.ReactNode; className?: string;[key: string]: any }) {
   const { href, children, className, ...restProps } = props
 
   if (href.startsWith('/')) {
@@ -44,11 +44,12 @@ function CustomLink(props: { href: string; children?: React.ReactNode; className
   return <a href={href} target="_blank" rel="noopener noreferrer" className={className || "text-green-400 hover:text-green-300"} {...restProps}>{children}</a>
 }
 
-function RoundedImage(props: { alt: string; src: string; [key: string]: any }) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />
+function RoundedImage(props: { alt: string; src: string; className?: string; [key: string]: any }) {
+  const { alt, src, className, ...restProps } = props
+  return <Image alt={alt} src={src} className={className || "rounded-lg"} {...restProps} />
 }
 
-function Code({ children, ...props }: { children: string; [key: string]: any }) {
+function Code({ children, ...props }: { children: string;[key: string]: any }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} className="bg-zinc-800/50 rounded px-1" {...props} />
 }
@@ -68,9 +69,9 @@ function slugify(str: string | React.ReactNode): string {
 function createHeading(level: number) {
   const Heading = ({ children }: { children: React.ReactNode }) => {
     // Extract text from children for slug
-    let text = typeof children === 'string' ? children : 
-               Array.isArray(children) ? children.map(c => typeof c === 'string' ? c : '').join('') :
-               String(children)
+    let text = typeof children === 'string' ? children :
+      Array.isArray(children) ? children.map(c => typeof c === 'string' ? c : '').join('') :
+        String(children)
     let slug = slugify(text)
     return React.createElement(
       `h${level}`,
