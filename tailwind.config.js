@@ -66,5 +66,7 @@ module.exports = {
             },
         },
     },
-    plugins: [require('@tailwindcss/typography')],
+    // Typography plugin removed - not compatible with Tailwind CSS v4
+    // Using custom prose styles from global.css instead
+    plugins: [],
 }

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { highlight } from 'sugar-high'
 
-function Table({ data }) {
+function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ))
@@ -26,36 +26,38 @@ function Table({ data }) {
   )
 }
 
-function CustomLink(props) {
-  let href = props.href
+function CustomLink(props: { href: string; children?: React.ReactNode; className?: string;[key: string]: any }) {
+  const { href, children, className, ...restProps } = props
 
   if (href.startsWith('/')) {
     return (
-      <Link href={href} className="text-green-400 hover:text-green-300" {...props}>
-        {props.children}
+      <Link href={href} className={className || "text-green-400 hover:text-green-300"} {...restProps}>
+        {children}
       </Link>
     )
   }
 
   if (href.startsWith('#')) {
-    return <a className="text-green-400 hover:text-green-300" {...props} />
+    return <a href={href} className={className || "text-green-400 hover:text-green-300"} {...restProps}>{children}</a>
   }
 
-  return <a target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300" {...props} />
+  return <a href={href} target="_blank" rel="noopener noreferrer" className={className || "text-green-400 hover:text-green-300"} {...restProps}>{children}</a>
 }
 
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />
+function RoundedImage(props: { alt: string; src: string; className?: string; [key: string]: any }) {
+  const { alt, src, className, ...restProps } = props
+  return <Image alt={alt} src={src} className={className || "rounded-lg"} {...restProps} />
 }
 
-function Code({ children, ...props }) {
+function Code({ children, ...props }: { children: string;[key: string]: any }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} className="bg-zinc-800/50 rounded px-1" {...props} />
 }
 
-function slugify(str) {
-  return str
-    .toString()
+function slugify(str: string | React.ReactNode): string {
+  // Extract text content from React node if needed
+  let text = typeof str === 'string' ? str : String(str)
+  return text
     .toLowerCase()
     .trim()
     .replace(/\s+/g, '-')
@@ -64,9 +66,13 @@ function slugify(str) {
     .replace(/\-\-+/g, '-')
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
-    let slug = slugify(children)
+function createHeading(level: number) {
+  const Heading = ({ children }: { children: React.ReactNode }) => {
+    // Extract text from children for slug
+    let text = typeof children === 'string' ? children :
+      Array.isArray(children) ? children.map(c => typeof c === 'string' ? c : '').join('') :
+        String(children)
+    let slug = slugify(text)
     return React.createElement(
       `h${level}`,
       {

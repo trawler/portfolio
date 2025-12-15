@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        mdxRs: true
-    }
+    // mdxRs is no longer needed when using next-mdx-remote/rsc
 }
 
 module.exports = nextConfig
