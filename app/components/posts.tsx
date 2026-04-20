@@ -5,7 +5,7 @@ export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
   return (
-    <div className="space-y-1">
+    <div className="divide-y divide-gray-100">
       {allBlogs
         .sort((a, b) => {
           if (
@@ -19,16 +19,14 @@ export function BlogPosts() {
           <Link
             key={post.slug}
             href={`/archive/${post.slug}`}
-            className="block hover:bg-indigo-100/20 rounded p-2 transition-colors w-full"
+            className="flex items-baseline gap-6 py-3 group"
           >
-            <div className="flex flex-row items-center w-full">
-              <div className="w-[90px] shrink-0 font-mono text-zinc-400 text-sm">
-                {formatDate(post.metadata.publishedAt, false)}
-              </div>
-              <p className="text-green-300 font-mono">
-                {post.metadata.title}
-              </p>
-            </div>
+            <span className="shrink-0 text-sm text-gray-400 font-mono group-hover:text-brand transition-colors">
+              {formatDate(post.metadata.publishedAt, false)}
+            </span>
+            <span className="text-gray-700 group-hover:text-brand transition-colors font-medium">
+              {post.metadata.title}
+            </span>
           </Link>
         ))}
     </div>

@@ -4,23 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-brand: #EA580C;
+}
+
 :root {
-  --tw-prose-body: rgb(134 239 172) !important;
-  --tw-prose-headings: rgb(74 222 128) !important;
-  --tw-prose-lead: rgb(134 239 172) !important;
-  --tw-prose-links: rgb(74 222 128) !important;
-  --tw-prose-bold: rgb(134 239 172) !important;
-  --tw-prose-counters: rgb(134 239 172) !important;
-  --tw-prose-bullets: rgb(134 239 172) !important;
-  --tw-prose-hr: rgb(63 63 70) !important;
-  --tw-prose-quotes: rgb(134 239 172) !important;
-  --tw-prose-quote-borders: rgb(74 222 128) !important;
-  --tw-prose-captions: rgb(161 161 170) !important;
-  --tw-prose-code: rgb(134 239 172) !important;
-  --tw-prose-pre-code: rgb(212 212 212) !important;
-  --tw-prose-pre-bg: rgb(39 39 42 / 0.5) !important;
-  --tw-prose-th-borders: rgb(63 63 70) !important;
-  --tw-prose-td-borders: rgb(63 63 70) !important;
+  --tw-prose-body: rgb(31 41 55);
+  --tw-prose-headings: rgb(17 24 39);
+  --tw-prose-lead: rgb(55 65 81);
+  --tw-prose-links: rgb(17 24 39);
+  --tw-prose-bold: rgb(17 24 39);
+  --tw-prose-counters: rgb(107 114 128);
+  --tw-prose-bullets: rgb(107 114 128);
+  --tw-prose-hr: rgb(229 231 235);
+  --tw-prose-quotes: rgb(55 65 81);
+  --tw-prose-quote-borders: rgb(209 213 219);
+  --tw-prose-captions: rgb(107 114 128);
+  --tw-prose-code: rgb(17 24 39);
+  --tw-prose-pre-code: rgb(55 65 81);
+  --tw-prose-pre-bg: rgb(249 250 251);
+  --tw-prose-th-borders: rgb(209 213 219);
+  --tw-prose-td-borders: rgb(229 231 235);
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -37,24 +41,12 @@
   color: #fefefe;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    color-scheme: dark;
-  }
-}
-
 html {
   min-width: 360px;
 }
 
 .prose {
-  @apply text-green-300;
+  @apply text-gray-700;
 }
 
 .prose .anchor {
@@ -71,20 +63,21 @@ html {
 }
 
 .prose a {
-  @apply text-green-400 underline hover:text-blue-400 transition-colors;
+  @apply text-brand underline hover:text-brand/70 transition-colors;
 }
+
 .prose .anchor:after {
-  @apply text-green-400;
+  @apply text-gray-400;
   content: "#";
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900;
-  padding: 16px !important; /* Force consistent padding */
+  @apply bg-gray-50 rounded-lg overflow-x-auto border border-gray-200;
+  padding: 16px !important;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg bg-neutral-50 dark:bg-neutral-900;
+  @apply px-1 py-0.5 rounded-lg bg-gray-100;
 }
 
 .prose pre code {
@@ -92,6 +85,7 @@ html {
   border: initial;
   line-height: 1.5;
 }
+
 .prose code span {
   @apply font-medium;
 }
@@ -103,15 +97,15 @@ html {
 }
 
 .prose ol > li {
-  @apply mb-8; /* Increase bottom margin of list items */
+  @apply mb-8;
 }
 
 .prose ol > li > pre {
-  @apply mt-8; /* Add top margin to code blocks inside list items */
+  @apply mt-8;
 }
 
 .prose ol > li:not(:has(pre)) {
-  @apply mb-2; /* Normal spacing for list items without code blocks */
+  @apply mb-2;
 }
 
 .prose img {
@@ -119,39 +113,38 @@ html {
 }
 
 .prose p {
-  @apply my-4 text-green-300;
+  @apply my-4 text-gray-700;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2 text-green-400;
+  @apply text-4xl font-semibold tracking-tight mt-6 mb-2 text-gray-900;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-green-400;
+  @apply text-xl font-semibold tracking-tight mt-6 mb-2 text-gray-900;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-green-400;
+  @apply text-xl font-semibold tracking-tight mt-6 mb-2 text-gray-900;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2 text-green-400;
+  @apply text-lg font-semibold tracking-tight mt-6 mb-2 text-gray-900;
 }
 
 .prose strong {
-  @apply font-medium text-green-400;
+  @apply font-semibold text-gray-900;
 }
 
 .prose ul {
-  @apply list-disc pl-6 text-green-300;
+  @apply list-disc pl-6 text-gray-700;
 }
 
 .prose ol {
-  @apply list-decimal pl-6 text-green-300;
+  @apply list-decimal pl-6 text-gray-700;
 }
 
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
@@ -165,7 +158,6 @@ pre {
   scrollbar-width: none;
 }
 
-/* Remove Safari input shadow on mobile */
 input[type="text"],
 input[type="email"] {
   -webkit-appearance: none;

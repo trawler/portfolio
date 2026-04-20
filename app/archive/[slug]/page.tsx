@@ -60,31 +60,21 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <article className="max-w-xl mx-auto text-green-300">
-      <div className="border-b border-zinc-700 pb-4 mb-8">
-        <div className="flex items-center text-zinc-400 text-sm mb-2">
-          <span className="font-mono">visitor@karen:~/archive$</span>
-          <span className="ml-2">cat {post.slug}.md</span>
-        </div>
-        <h1 className="text-2xl font-semibold tracking-tighter text-green-400">
+    <article className="max-w-2xl">
+      <div className="border-b border-gray-100 pb-6 mb-8">
+        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 mb-2">
           {post.metadata.title}
         </h1>
-        <h2 className="text-l font-medium tracking-tighter text-zinc-400">
+        <p className="text-gray-500 text-sm">
           {post.metadata.summary}
-        </h2>
-        <div className="flex items-center mt-2 text-sm text-zinc-300">
-          <span className="font-mono">Created:</span>
-          <span className="ml-2">{formatDate(post.metadata.publishedAt)}</span>
-        </div>
+        </p>
+        <p className="text-gray-400 text-sm mt-2">
+          {formatDate(post.metadata.publishedAt)}
+        </p>
       </div>
 
-      <div className="mt-8">
-        <div className="text-zinc-400 text-sm mb-4 font-mono">
-          <span></span> Output:
-        </div>
-        <div className="text-green-300 [&>*]:text-green-300">
-          <CustomMDX source={post.content} />
-        </div>
+      <div className="prose text-gray-700">
+        <CustomMDX source={post.content} />
       </div>
     </article>
   )
