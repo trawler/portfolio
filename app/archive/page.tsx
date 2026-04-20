@@ -1,8 +1,8 @@
 import { BlogPosts } from 'app/components/posts'
 
 export const metadata = {
-  title: 'Blog',
-  description: 'Read my thoughts on software development, Kubernetes, and open source.',
+  title: 'Archive',
+  description: 'Writing on software development, Kubernetes, and open source.',
 }
 
 export default function Page() {
@@ -10,7 +10,7 @@ export default function Page() {
     <section>
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-6">
-          <span className="text-zinc-400">visitor@karen:~$</span> ls blog/latest
+          <span className="text-zinc-400">visitor@karen:~$</span> ls archive/
         </h2>
       </div>
 

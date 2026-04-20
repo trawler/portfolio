@@ -53,41 +53,36 @@ const Page = () => {
             <span className="text-zinc-400"></span>
             <div className="mt-4 space-y-4 ml-4">
               <p>
-                I'm Karen Almog, a Kubernetes developer and open source enthusiast who believes in learning in public.
-                With experience at companies like Mirantis (<a
+                I'm Karen Almog, a Technical Product Manager at <a
+                  href="https://metalbear.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 underline"
+                >Metalbear</a>, where I work on <a
+                  href="https://github.com/metalbear-co/mirrord"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 underline"
+                >mirrord</a>. mirrord lets you run your local process in the context of your Kubernetes cluster, so you can develop and debug against real infrastructure without deploying.
+              </p>
+
+              <p>
+                Before moving into product, I spent about a decade as a software engineer in the cloud-native space.
+                I was a core contributor to <a
                   href="https://github.com/k0sproject/k0s"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 underline"
-                >k0s</a>), CoreOS (<a
+                >k0s</a> at Mirantis, worked on <a
                   href="https://github.com/coreos/tectonic-installer"
-                  target='_blank'
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 underline"
-                >Tectonic</a>
-                ), and eBay, I've been fortunate
-                to work on some exciting projects in the cloud-native space.
+                >Tectonic</a> at CoreOS, and led platform engineering teams. That background shapes how I think about product.
               </p>
 
               <p>
-                Currently, I'm a Principal Software Engineer at SysEleven GmbH, where I help build and improve our
-                Kubernetes-based deployment platform.
-              </p>
-
-              <p>
-                When I'm not coding, you might find me speaking at tech events like Kubernetes Community Days Berlin
-                or local meetups.
-              </p>
-
-              <p>
-                Here's the thing - I'm a self-taught developer with no formal CS degree, and I'm proud of that journey!
-                This blog is my way of documenting what I learn as I deep-dive into Golang and continue exploring the
-                cloud-native ecosystem.
-              </p>
-
-              <p>
-                If you're into Kubernetes, Go, or open source, or if you're on your own
-                self-learning adventure, you might find something useful here.
+                I'm a self-taught developer with no formal CS degree. The archive documents that learning in public - Go deep-dives, Kubernetes internals, and whatever I was digging into at the time.
               </p>
             </div>
           </div>
@@ -95,7 +90,7 @@ const Page = () => {
 
         <div className="mt-12">
           <h2 className="text-xl font-semibold mb-6">
-            <span className="text-zinc-400">visitor@karen:~$</span> ls blog/latest
+            <span className="text-zinc-400">visitor@karen:~$</span> ls archive/
           </h2>
           <div className="bg-zinc-800/50 rounded-lg p-4">
             <BlogPosts />

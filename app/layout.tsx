@@ -10,26 +10,26 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL('https://trawler.sh'),
   title: {
-    default: 'Karen Almog - Principal Software Engineer',
+    default: 'Karen Almog - Technical Product Manager',
     template: '%s | Karen Almog'
   },
-  description: 'Principal Software Engineer specialized in Kubernetes, cloud-native technologies, and distributed systems. Expert in Go, infrastructure, and platform engineering.',
-  keywords: ['Kubernetes', 'Go', 'Software Engineering', 'Cloud Native', 'DevOps', 'Platform Engineering'],
+  description: 'Technical Product Manager at Metalbear, working on mirrord. Background in Kubernetes, cloud-native infrastructure, and open source.',
+  keywords: ['Kubernetes', 'Go', 'Product Management', 'Cloud Native', 'mirrord', 'Metalbear', 'Developer Tools'],
   authors: [{ name: 'Karen Almog' }],
   creator: 'Karen Almog',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://trawler.sh',
-    title: 'Karen Almog - Principal Software Engineer',
-    description: 'Principal Software Engineer specialized in Kubernetes and cloud-native technologies',
+    title: 'Karen Almog - Technical Product Manager',
+    description: 'Technical Product Manager at Metalbear, working on mirrord.',
     siteName: 'Karen Almog',
     images: [
       {
         url: '/og',
         width: 1200,
         height: 630,
-        alt: 'Karen Almog - Principal Software Engineer',
+        alt: 'Karen Almog - Technical Product Manager',
       }
     ],
   },

@@ -9,8 +9,9 @@ const ResumePage = () => {
                 </h1>
                 <div className="space-y-4">
                     <p className="text-green-300">
-                        Principal Software Engineer specialized in Kubernetes, cloud-native technologies, and distributed systems.
-                        Passionate about open source and building scalable infrastructure solutions.
+                        Technical Product Manager with a background in software engineering. I've spent years building
+                        Kubernetes infrastructure and developer tooling, and now I work on product for developers in the same space.
+                        I care about open source, developer experience, and shipping things that actually get used.
                     </p>
                     <div className="flex items-center text-sm">
                         <span className="text-zinc-400 font-mono">$CONTACT =</span>
@@ -32,10 +33,27 @@ const ResumePage = () => {
                 </h2>
                 <div className="space-y-6">
                     <div className="border-l-2 border-green-400 pl-4">
+                        <h3 className="text-green-400 font-semibold text-base">
+                            Technical Product Manager
+                        </h3>
+                        <p className="text-zinc-400">Metalbear • 03/2026 - Current</p>
+                        <ul className="list-disc list-inside text-green-300 mt-2 space-y-1 max-w-2xl">
+                            <li>Product manager for <a
+                                href="https://github.com/metalbear-co/mirrord"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-blue-400 underline"
+                            >mirrord</a>, an open source tool for local Kubernetes development.</li>
+                            <li>Define product roadmap and work closely with engineering on feature design and prioritization.</li>
+                            <li>Engage directly with the developer community to understand pain points and shape the product.</li>
+                        </ul>
+                    </div>
+
+                    <div className="border-l-2 border-green-400 pl-4">
                         <h3 className="text-green-400 font-semibold text-base"> {/* Made role headings slightly larger than content */}
                             Principal Software Engineer
                         </h3>
-                        <p className="text-zinc-400">SysEleven GmbH • Current</p>
+                        <p className="text-zinc-400">SysEleven GmbH • 2023 - 02/2026</p>
                         <ul className="list-disc list-inside text-green-300 mt-2 space-y-1 max-w-2xl">
                             <li>Lead development of Kubernetes-based deployment platform.</li>
                             <li>Participate in Architecture and design sessions.</li>
@@ -113,43 +131,30 @@ const ResumePage = () => {
                 </h2>
                 <div className="grid grid-cols-2 gap-4 text-green-300">
                     <div>
-                        <h3 className="text-green-400 font-semibold mb-2">Core Technologies</h3>
+                        <h3 className="text-green-400 font-semibold mb-2">Product</h3>
+                        <ul className="list-disc list-inside space-y-1">
+                            <li>Product Strategy</li>
+                            <li>Roadmapping</li>
+                            <li>Developer Experience</li>
+                            <li>Open Source Community</li>
+                            <li>Stakeholder Management</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 className="text-green-400 font-semibold mb-2">Technical</h3>
                         <ul className="list-disc list-inside space-y-1">
                             <li>Kubernetes</li>
                             <li>Go</li>
-                            <li>Terraform</li>
-                            <li>Linux</li>
-                            <li>Git</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 className="text-green-400 font-semibold mb-2">Cloud & Infrastructure</h3>
-                        <ul className="list-disc list-inside space-y-1">
-                            <li>AWS</li>
-                            <li>Libvirt</li>
-                            <li>Infrastructure as Code (Iac)</li>
+                            <li>Cloud Native</li>
                             <li>Platform Engineering</li>
-                            <li>Google Cloud</li>
                         </ul>
                     </div>
                     <div>
-                        <h3 className="text-green-400 font-semibold mb-2">Methodologies & Practices</h3>
+                        <h3 className="text-green-400 font-semibold mb-2">Practices</h3>
                         <ul className="list-disc list-inside space-y-1">
-                            <li>DevOps</li>
-                            <li>Platform Engineering</li>
-                            <li>Site Reliability Engineering (SRE)</li>
-                            <li>Infrastructure Automation</li>
-                            <li>Cloud Native Architecture</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 className="text-green-400 font-semibold mb-2">Secondary Skills</h3>
-                        <ul className="list-disc list-inside space-y-1">
-                            <li>CI/CD</li>
-                            <li>System Architecture</li>
-                            <li>System Monitoring</li>
-                            <li>Cloud Migration</li>
+                            <li>Agile</li>
                             <li>Technical Leadership</li>
+                            <li>Cross-functional Collaboration</li>
                         </ul>
                     </div>
                 </div>

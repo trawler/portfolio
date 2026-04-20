@@ -10,10 +10,10 @@ export function Navbar() {
             ~/home
           </a>
           <a
-            href="/blog"
+            href="/archive"
             className="text-green-400 hover:text-blue-400 transition-colors"
           >
-            ~/blog
+            ~/archive
           </a>
           <a
             href="/cv"

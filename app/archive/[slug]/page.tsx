@@ -1,4 +1,4 @@
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { formatDate, getBlogPosts } from 'app/archive/utils'
 import { CustomMDX } from 'app/components/mdx'
 import { baseUrl } from 'app/sitemap'
 import { notFound } from 'next/navigation'
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}/archive/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -63,7 +63,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     <article className="max-w-xl mx-auto text-green-300">
       <div className="border-b border-zinc-700 pb-4 mb-8">
         <div className="flex items-center text-zinc-400 text-sm mb-2">
-          <span className="font-mono">visitor@karen:~/blog$</span>
+          <span className="font-mono">visitor@karen:~/archive$</span>
           <span className="ml-2">cat {post.slug}.md</span>
         </div>
         <h1 className="text-2xl font-semibold tracking-tighter text-green-400">

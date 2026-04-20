@@ -1,4 +1,4 @@
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { formatDate, getBlogPosts } from 'app/archive/utils'
 import Link from 'next/link'
 
 export function BlogPosts() {
@@ -18,7 +18,7 @@ export function BlogPosts() {
         .map((post) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/archive/${post.slug}`}
             className="block hover:bg-indigo-100/20 rounded p-2 transition-colors w-full"
           >
             <div className="flex flex-row items-center w-full">
