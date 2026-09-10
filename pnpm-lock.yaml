@@ -38,33 +38,18 @@ importers:
       lucide-react:
         specifier: ^1.8.0
         version: 1.8.0(react@19.2.5)
-      mono:
-        specifier: link:geist/font/mono
-        version: link:geist/font/mono
       next:
         specifier: ^16.2.4
         version: 16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       next-mdx-remote:
         specifier: ^6.0.0
         version: 6.0.0(@types/react@19.2.14)(acorn@8.14.0)(react@19.2.5)
-      next@latest:
-        specifier: link:@vercel/speed-insights/next@latest
-        version: link:@vercel/speed-insights/next@latest
-      og@latest:
-        specifier: link:next/og@latest
-        version: link:next/og@latest
       react:
         specifier: ^19.2.5
         version: 19.2.5
       react-dom:
         specifier: ^19.2.5
         version: 19.2.5(react@19.2.5)
-      react@latest:
-        specifier: link:@vercel/analytics/react@latest
-        version: link:@vercel/analytics/react@latest
-      sans:
-        specifier: link:geist/font/sans
-        version: link:geist/font/sans
       sugar-high:
         specifier: ^1.1.0
         version: 1.1.0

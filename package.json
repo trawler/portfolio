@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,15 +19,10 @@
     "@vercel/speed-insights": "^2.0.0",
     "geist": "^1.7.0",
     "lucide-react": "^1.8.0",
-    "mono": "link:geist/font/mono",
     "next": "^16.2.4",
     "next-mdx-remote": "^6.0.0",
-    "next@latest": "link:@vercel/speed-insights/next@latest",
-    "og@latest": "link:next/og@latest",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react@latest": "link:@vercel/analytics/react@latest",
-    "sans": "link:geist/font/sans",
     "sugar-high": "^1.1.0",
     "tailwindcss": "4.2.2",
     "typescript": "6.0.3"
