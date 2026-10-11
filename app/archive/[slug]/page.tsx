@@ -3,6 +3,8 @@ import { CustomMDX } from 'app/components/mdx'
 import { baseUrl } from 'app/sitemap'
 import { notFound } from 'next/navigation'
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   let posts = getBlogPosts()
   return posts.map((post) => ({
