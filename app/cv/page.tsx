@@ -14,12 +14,12 @@ const ResumePage = () => {
                         I care about open source, developer experience, and shipping things that actually get used.
                     </p>
                     <a
-                        href="mailto:kalmog@trawler.sh?subject=Let's Connect (from trawler.sh)"
+                        href="mailto:hi@trawler.sh?subject=Let's Connect (from trawler.sh)"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block text-brand underline hover:text-brand/70 transition-colors"
                     >
-                        kalmog@trawler.sh
+                        hi@trawler.sh
                     </a>
                 </div>
             </section>

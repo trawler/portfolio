@@ -31,7 +31,7 @@ const Page = () => {
             </svg>
           </a>
           <a
-            href="mailto:kalmog@trawler.sh?subject=Let's Connect (from trawler.sh)"
+            href="mailto:hi@trawler.sh?subject=Let's Connect (from trawler.sh)"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-brand transition-colors"
